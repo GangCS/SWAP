@@ -30,8 +30,10 @@ public class CharacterKeyboardMover : MonoBehaviour
     }
         void OnGUI()
         {
-        float xMin = Input.mousePosition.x-7;
-        float yMin = Input.mousePosition.y-8;
+        /* float xMin = Input.mousePosition.x-7;
+         float yMin = Input.mousePosition.y-8;*/
+        float xMin = (Screen.width - Input.mousePosition.x) - (crosshairImage.width / 4);
+        float yMin = (Screen.height - Input.mousePosition.y) - (crosshairImage.height / 4);
         GUI.DrawTexture(new Rect(xMin, yMin, crosshairImage.width/4, crosshairImage.height/4), crosshairImage);
         }
     
