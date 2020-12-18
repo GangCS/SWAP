@@ -53,9 +53,8 @@ public class CharacterKeyboardMover : MonoBehaviour
                 hitInfo.transform.gameObject.GetComponent<Outline>().enabled = true;
             }
         }
-            float x = Input.GetAxis("Horizontal");
+        float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-        //if (x == 0 && z == 0) return;
         velocity.x = x * currSpeed;
         velocity.z = z * currSpeed;
         if (!_cc.isGrounded)
@@ -66,6 +65,7 @@ public class CharacterKeyboardMover : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                velocity.y = 0;
                 velocity.y += _jumpheight;
             }
             if(Input.GetKeyDown(KeyCode.LeftShift))
@@ -129,6 +129,15 @@ public class CharacterKeyboardMover : MonoBehaviour
                 Box.GetComponent<Rigidbody>().isKinematic = false;
                 Box = null;
             }
+        }
+        if(Box!=null && Input.GetMouseButtonDown(0))
+        {
+            Box.transform.SetParent(null);
+            Rigidbody rb = Box.GetComponent<Rigidbody>();
+            rb.isKinematic = false;
+            rb.AddForce(rayFromCameraToClickPosition.direction * 15f, ForceMode.Impulse);
+            Box = null;
+           
         }
        
         
