@@ -9,7 +9,7 @@ public class CursorHider : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))//Esc button pressed
         {
             if (!Cursor.visible)
             {

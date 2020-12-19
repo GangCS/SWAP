@@ -8,16 +8,16 @@ public class Respawner : MonoBehaviour
     Vector3 orgPos;
     void Start()
     {
-        orgPos = transform.position;
+        orgPos = transform.position;//saving starting position
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.y < -5)
+        if(transform.position.y < -5)//if box falls down to the abyss
         {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
-            transform.position = orgPos;
+            transform.position = orgPos;//Placing it back
         }
     }
 }
