@@ -1,0 +1,90 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerActions : MonoBehaviour
+{
+    private GameObject Box = null;
+    private Ray rayFromCameraToClickPosition;
+    private Vector3 ScreenMiddle;
+    private CharacterController _cc;
+    [SerializeField] GameObject upDown = null;
+    // Start is called before the first frame update
+    void Start()
+    {
+        ScreenMiddle = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+        _cc = GetComponent<CharacterController>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        rayFromCameraToClickPosition = Camera.main.ScreenPointToRay(ScreenMiddle);
+
+        if (Input.GetKeyDown(KeyCode.Q))//Try to swap location with an object
+        {
+            SWAP();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))//Try to pick up/down an object
+        {
+            pickUp();
+        }
+        //Mouse left click && Box is not null when lifted by player
+        if (Input.GetMouseButtonDown(0) && Box != null)
+        {
+            ThrowBox();
+        }
+    }
+    private void SWAP()
+    {
+        //if (drawRayForDebug)
+        // Debug.DrawRay(rayFromCameraToClickPosition.origin, rayFromCameraToClickPosition.direction * rayLength, rayColor, rayDuration);
+        RaycastHit hittedBox;
+        bool hasHit = Physics.Raycast(rayFromCameraToClickPosition, out hittedBox);
+        hasHit = Physics.Raycast(rayFromCameraToClickPosition, out hittedBox);
+        if (hasHit)
+        {
+            if (hittedBox.collider.gameObject.tag == "Box")//ray hit box
+            {
+                Vector3 oldPos = hittedBox.transform.position;
+                hittedBox.transform.position = transform.position + new Vector3(0, 1, 0);//place the box in character position
+                _cc.enabled = false; // we change _cc to false, make the Swap and then make it true again.
+                transform.position = oldPos;//place the character in the box position
+                _cc.enabled = true;
+            }
+        }
+    }
+    private void pickUp()
+    {
+        if (Box == null)//Lifting Box up
+        {
+            RaycastHit hittedBox;
+            bool hasHit = Physics.Raycast(rayFromCameraToClickPosition, out hittedBox);
+            if (hasHit && hittedBox.distance <= 4f && hittedBox.collider.gameObject.tag == "Box")//ray hit box and the box is close enough
+            {
+                Box = hittedBox.rigidbody.gameObject;
+                hittedBox.rigidbody.isKinematic = true;
+
+                Vector3 positionForBox = Box.transform.position;
+                positionForBox = Camera.main.transform.position + Camera.main.transform.forward * 2;
+                Box.transform.position = positionForBox;
+                Box.transform.SetParent(upDown.transform);//lifting the box to character hands
+            }
+        }
+        else // Leaving Box down When E is pressed again
+        {
+            Box.transform.SetParent(null);
+            Box.GetComponent<Rigidbody>().isKinematic = false;
+            Box = null;
+        }
+    }
+    private void ThrowBox()
+    {
+        Box.transform.SetParent(null);
+        Rigidbody rb = Box.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        rb.AddForce(rayFromCameraToClickPosition.direction * 15f, ForceMode.Impulse);//Throw the Box forward
+        Box = null;
+    }
+}
