@@ -64,7 +64,10 @@ public class CharacterKeyboardMover : MonoBehaviour
         float z = Input.GetAxis("Vertical");
         velocity.x = x * currSpeed;
         velocity.z = z * currSpeed;
-
+        if(Box!=null && !Box.GetComponent<Rigidbody>().isKinematic)
+        {
+            Box = null;
+        }
         if (!_cc.isGrounded)//if character is not standing on the ground
         {
             velocity.y -= _gravity * Time.deltaTime;
@@ -120,30 +123,32 @@ public class CharacterKeyboardMover : MonoBehaviour
                 hasHit = Physics.Raycast(rayFromCameraToClickPosition, out hitInfo);
                 if (hasHit && hitInfo.distance <= 4f && hitInfo.collider.gameObject.tag == "Box")//ray hit box and the box is close enough
                 {
+                   
                     Box = hitInfo.rigidbody.gameObject;
                     hitInfo.rigidbody.isKinematic = true;
                     Vector3 pos = Box.transform.position;
-                    pos.y = 1;
+                    pos = Camera.main.transform.position + Camera.main.transform.forward*2;
+                   
+                 //   pos = transform.rotation.fo;
                     Box.transform.position = pos;
                     Box.transform.SetParent(upDown.transform);//lifting the box to character hands
                 }
             }
             else//Leaving Box down
             {
-                Debug.Log("ELSE");
-                Box.transform.SetParent(null);
-                Box.GetComponent<Rigidbody>().isKinematic = false;
-                Box = null;
+                    Box.transform.SetParent(null);
+                    Box.GetComponent<Rigidbody>().isKinematic = false;
+                   Box = null;
             }
         }
 
         if(Box!=null && Input.GetMouseButtonDown(0))//Mouse left click
         {
-            Box.transform.SetParent(null);
-            Rigidbody rb = Box.GetComponent<Rigidbody>();
-            rb.isKinematic = false;
-            rb.AddForce(rayFromCameraToClickPosition.direction * 15f, ForceMode.Impulse);//Throw the Box forward
-            Box = null;
+                Box.transform.SetParent(null);
+                Rigidbody rb = Box.GetComponent<Rigidbody>();
+                rb.isKinematic = false;
+                rb.AddForce(rayFromCameraToClickPosition.direction * 15f, ForceMode.Impulse);//Throw the Box forward
+                Box = null;
         }
        
         velocity = transform.TransformDirection(velocity);

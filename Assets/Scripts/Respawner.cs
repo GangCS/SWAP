@@ -20,4 +20,12 @@ public class Respawner : MonoBehaviour
             transform.position = orgPos;//Placing it back
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (GetComponent<Rigidbody>().isKinematic)
+        {
+            transform.SetParent(null);
+            GetComponent<Rigidbody>().isKinematic = false;
+        }
+    }
 }
