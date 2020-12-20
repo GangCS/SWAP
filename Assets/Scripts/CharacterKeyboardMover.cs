@@ -31,19 +31,20 @@ public class CharacterKeyboardMover : MonoBehaviour
         currSpeed = _speed;
     }
 
-    void OnGUI()//This function creates a little white cursor in the middle of the screen for aiming
+   /* void OnGUI()//This function creates a little white cursor in the middle of the screen for aiming
     {
         //float xMin = Input.mousePosition.x-7;
         //float yMin = Input.mousePosition.y-8;
-        float xMin = (Screen.width - Input.mousePosition.x) - (crosshairImage.width / 4);
+       *//* float xMin = (Screen.width - Input.mousePosition.x) - (crosshairImage.width / 4);
         float yMin = (Screen.height - Input.mousePosition.y) - (crosshairImage.height / 4);
-        GUI.DrawTexture(new Rect(xMin, yMin, crosshairImage.width/4, crosshairImage.height/4), crosshairImage);
-    }
+        GUI.DrawTexture(new Rect(xMin, yMin, crosshairImage.width/4, crosshairImage.height/4), crosshairImage);*//*
+    }*/
     
     Vector3 velocity;
     void Update()
     {
-        Ray rayFromCameraToClickPosition = Camera.main.ScreenPointToRay(Input.mousePosition);//rayCast hit position
+        Vector3 test = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+        Ray rayFromCameraToClickPosition = Camera.main.ScreenPointToRay(test);//rayCast hit position
 
         if (drawRayForDebug)
             Debug.DrawRay(rayFromCameraToClickPosition.origin, rayFromCameraToClickPosition.direction * rayLength, rayColor, rayDuration);
@@ -87,7 +88,7 @@ public class CharacterKeyboardMover : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Q))//Try to swap location with an object
         {
-            rayFromCameraToClickPosition = Camera.main.ScreenPointToRay(Input.mousePosition);//rayCast hit position
+            rayFromCameraToClickPosition = Camera.main.ScreenPointToRay(test);//rayCast hit position
 
             if (drawRayForDebug)
                 Debug.DrawRay(rayFromCameraToClickPosition.origin, rayFromCameraToClickPosition.direction * rayLength, rayColor, rayDuration);
@@ -111,7 +112,7 @@ public class CharacterKeyboardMover : MonoBehaviour
         {
             if (Box == null)//Lifting Box up
             {
-                rayFromCameraToClickPosition = Camera.main.ScreenPointToRay(Input.mousePosition);//rayCast hit position
+                rayFromCameraToClickPosition = Camera.main.ScreenPointToRay(test);//rayCast hit position
 
                 if (drawRayForDebug)
                     Debug.DrawRay(rayFromCameraToClickPosition.origin, rayFromCameraToClickPosition.direction * rayLength, rayColor, rayDuration);
