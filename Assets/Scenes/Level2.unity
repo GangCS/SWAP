@@ -2192,6 +2192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0656db7800311e94f87228b9e9f65c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 1158200e84b7f9a42b06ba16db8dd584, type: 3}
 --- !u!1001 &704234819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4273,6 +4274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalPosition: {x: 0, y: 8, z: 0}
+  sound: {fileID: 8300000, guid: ba7dacc05d7b3394c9d9d41cdab379b3, type: 3}
 --- !u!1 &1370777685
 GameObject:
   m_ObjectHideFlags: 0
@@ -5713,6 +5715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalPosition: {x: -0.24, y: 8, z: -2.44}
+  sound: {fileID: 8300000, guid: ba7dacc05d7b3394c9d9d41cdab379b3, type: 3}
 --- !u!1001 &1922990649
 PrefabInstance:
   m_ObjectHideFlags: 0

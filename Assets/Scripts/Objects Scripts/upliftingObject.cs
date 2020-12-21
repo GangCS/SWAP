@@ -7,14 +7,27 @@ public class upliftingObject : IMovementAction
     [SerializeField] Vector3 goalPosition;
     protected Vector3 OriginalPosition;
     protected Vector3 CurrPosition;
+
+    [SerializeField] AudioClip sound;
+    bool toPlay = true;
     public override void performAction()
     {
         CurrPosition = goalPosition;
+        if (toPlay)
+        {
+            AudioSource.PlayClipAtPoint(sound, transform.position);
+            toPlay = false;
+        }
     }
 
     public override void undoAction()
     {
         CurrPosition = OriginalPosition;
+        if (!toPlay)
+        {
+            AudioSource.PlayClipAtPoint(sound, transform.position);
+            toPlay = true;
+        }
     }
 
     void Start()
