@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * This component performs player actions controlled with a different keys on the keyboard.
+ */
 public class PlayerActions : MonoBehaviour
 {
     private GameObject Box = null;
@@ -21,6 +24,11 @@ public class PlayerActions : MonoBehaviour
     {
         rayFromCameraToClickPosition = Camera.main.ScreenPointToRay(ScreenMiddle);
 
+        /*      if (boxIsLifted()) 
+                {
+                    Box = null; // box is not lifted
+                } probably not necessary
+        */
         if (Input.GetKeyDown(KeyCode.Q))//Try to swap location with an object
         {
             SWAP();
@@ -38,8 +46,8 @@ public class PlayerActions : MonoBehaviour
     }
     private void SWAP()
     {
-        //if (drawRayForDebug)
-        // Debug.DrawRay(rayFromCameraToClickPosition.origin, rayFromCameraToClickPosition.direction * rayLength, rayColor, rayDuration);
+        // this function SWAP position between the player and the box.
+
         RaycastHit hittedBox;
         bool hasHit = Physics.Raycast(rayFromCameraToClickPosition, out hittedBox);
         hasHit = Physics.Raycast(rayFromCameraToClickPosition, out hittedBox);
@@ -55,21 +63,30 @@ public class PlayerActions : MonoBehaviour
             }
         }
     }
+    private bool boxIsLifted()
+    {
+        if (Box != null && !Box.GetComponent<Rigidbody>().isKinematic) // if box lifted
+        {
+            return true;
+        }
+        return false;
+    }
     private void pickUp()
     {
-        if (Box == null)//Lifting Box up
+        // This Function Pick up the box (makes it child of the player) and drop it down When E is pressed again.
+        if (Box == null)// Box isn't lifted yet -> Lift the Box up
         {
             RaycastHit hittedBox;
             bool hasHit = Physics.Raycast(rayFromCameraToClickPosition, out hittedBox);
             if (hasHit && hittedBox.distance <= 4f && hittedBox.collider.gameObject.tag == "Box")//ray hit box and the box is close enough
             {
-                Box = hittedBox.rigidbody.gameObject;
+                Box = hittedBox.rigidbody.gameObject; // box isn't null now
                 hittedBox.rigidbody.isKinematic = true;
 
                 Vector3 positionForBox = Box.transform.position;
                 positionForBox = Camera.main.transform.position + Camera.main.transform.forward * 2;
                 Box.transform.position = positionForBox;
-                Box.transform.SetParent(upDown.transform);//lifting the box to character hands
+                Box.transform.SetParent(upDown.transform); // lifting the box to character hands
             }
         }
         else // Leaving Box down When E is pressed again
@@ -81,6 +98,7 @@ public class PlayerActions : MonoBehaviour
     }
     private void ThrowBox()
     {
+        // this function throws the ball from the player
         Box.transform.SetParent(null);
         Rigidbody rb = Box.GetComponent<Rigidbody>();
         rb.isKinematic = false;

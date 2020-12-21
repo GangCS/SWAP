@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 
@@ -14,18 +15,18 @@ public class CharacterKeyboardMover : MonoBehaviour
     private float currSpeed;
     [SerializeField] float _gravity = 9.81f;
     [SerializeField] float _jumpheight = 100f;
+    private Vector3 velocity;
 
     //RayCast
     [SerializeField] bool drawRayForDebug = true;
     [SerializeField] float rayLength = 100f;
     [SerializeField] float rayDuration = 1f;
     [SerializeField] Color rayColor = Color.white;
-    [SerializeField] GameObject upDown = null;
-    private GameObject Box = null;
+
     private CharacterController _cc;
     private Vector3 ScreenMiddle;
     private Ray rayFromCameraToClickPosition;
-    private Vector3 velocity;
+
 
     void Start()
     {
@@ -42,47 +43,44 @@ public class CharacterKeyboardMover : MonoBehaviour
         if (drawRayForDebug)
             Debug.DrawRay(rayFromCameraToClickPosition.origin, rayFromCameraToClickPosition.direction * rayLength, rayColor, rayDuration);
 
-        RaycastHit hitInfo;
-        bool hasHit = Physics.Raycast(rayFromCameraToClickPosition, out hitInfo);
-        if (hasHit)
-        {
-            if (hitInfo.transform.gameObject.tag == "Box")//ray hit box
-            {
-                hitInfo.transform.gameObject.GetComponent<Outline>().enabled = true;
-            }
-        }
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-        velocity.x = x * currSpeed;
-        velocity.z = z * currSpeed;
-        if (Box != null && !Box.GetComponent<Rigidbody>().isKinematic)
-        {
-            Box = null;
-        }
+
+        drawOutlineToBox(); // make the red outline if the ray is at box
+
+        setVelocityAndDirection();
+        moveCharacter();
+
         if (!_cc.isGrounded) //if character is NOT standing on the ground
         {
-            velocity.y -= _gravity * Time.deltaTime;
+            enableGravity();
         }
         else // player is on the ground
         {
             if (Input.GetKeyDown(KeyCode.Space))//space button pressed - jump
             {
-                velocity.y = 0;
-                velocity.y += _jumpheight;
+                Jump();
             }
             if(Input.GetKeyDown(KeyCode.LeftShift))//shift button pressed - walk faster
             {
-                currSpeed =_speed* 2;
+                walkFaster();
             }
             if (Input.GetKeyUp(KeyCode.LeftShift))//shift button unpressed - walk regular speed
             {
-                currSpeed = _speed;
+                walkNormal();
             }
         }
+    }
+    private void setVelocityAndDirection()
+    {
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+        velocity.x = x * currSpeed;
+        velocity.z = z * currSpeed;
         velocity = transform.TransformDirection(velocity);
+    }
+    private void moveCharacter()
+    {
         _cc.Move(velocity * Time.deltaTime); // Moving the character in pressed direction / Per Frame
     }
-
     private void OnControllerColliderHit(ControllerColliderHit hit)//character collision
     {
         if (hit.gameObject.tag != "Floor")
@@ -109,6 +107,35 @@ public class CharacterKeyboardMover : MonoBehaviour
 
             // Apply the push
             body.velocity = pushDir * currSpeed;
+        }
+    }
+    private void enableGravity()
+    {
+        velocity.y -= _gravity * Time.deltaTime;
+    }
+    private void Jump()
+    {
+        velocity.y = 0;
+        velocity.y += _jumpheight;
+    }
+    private void walkFaster()
+    {
+        currSpeed = _speed * 2;
+    }
+    private void walkNormal()
+    {
+        currSpeed = _speed;
+    }
+    private void drawOutlineToBox()
+    {
+        RaycastHit hittedBox;
+        bool hasHit = Physics.Raycast(rayFromCameraToClickPosition, out hittedBox);
+        if (hasHit)
+        {
+            if (hittedBox.transform.gameObject.tag == "Box") //ray hit box
+            {
+                hittedBox.transform.gameObject.GetComponent<Outline>().enabled = true; // make the red outline to the box
+            }
         }
     }
 }
