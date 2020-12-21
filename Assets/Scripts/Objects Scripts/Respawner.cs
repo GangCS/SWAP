@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Respawner : MonoBehaviour
 {
-    [Tooltip("This Script Respawns the object when destroyed on his original position")]
+    [Tooltip("This Script Re spawns the object when destroyed on his original position")]
     Vector3 originalPosition;
     void Start()
     {
@@ -15,7 +15,19 @@ public class Respawner : MonoBehaviour
     {
         if(transform.position.y < -5)//if box falls down to the abyss
         {
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if(rb!= null)
+            {
+                rb.velocity = Vector3.zero;
+            }
+           
+            if(transform.tag == "Player")
+            {
+                CharacterController _cc = GetComponent<CharacterController>();
+                _cc.enabled = false;
+                transform.position = originalPosition; // Placing it back
+                _cc.enabled = true;
+            }
             transform.position = originalPosition; // Placing it back
         }
     }
