@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Box
   - Floor
+  - GreenBox
+  - BlueBox
+  - BlueButton
+  - GreenButton
   layers:
   - Default
   - TransparentFX
