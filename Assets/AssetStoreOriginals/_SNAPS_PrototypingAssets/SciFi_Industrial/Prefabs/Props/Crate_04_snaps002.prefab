@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 1133936151078361597}
   - component: {fileID: -4503541119526422172}
   - component: {fileID: 1408395564833528460}
+  - component: {fileID: -4369622583055948829}
+  - component: {fileID: -5411857982153634590}
   m_Layer: 0
   m_Name: Crate_04_snaps002
   m_TagString: Untagged
@@ -1470,5 +1472,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d190f567bff9cde4f847ff4ccd337571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &-4369622583055948829
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062870459301972}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &-5411857982153634590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062870459301972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce9ef27ac5bc34247864a036473fe988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
