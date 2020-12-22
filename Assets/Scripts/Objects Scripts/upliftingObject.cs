@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,12 @@ public class upliftingObject : IMovementAction
 
     [SerializeField] AudioClip sound;
     bool toPlay = true;
+
+    void Start()
+    {
+        OriginalPosition = transform.localPosition;
+        CurrPosition = transform.localPosition;
+    }
     public override void performAction()
     {
         CurrPosition = goalPosition;
@@ -18,6 +25,7 @@ public class upliftingObject : IMovementAction
             AudioSource.PlayClipAtPoint(sound, transform.position);
             toPlay = false;
         }
+
     }
 
     public override void undoAction()
@@ -28,13 +36,6 @@ public class upliftingObject : IMovementAction
             AudioSource.PlayClipAtPoint(sound, transform.position);
             toPlay = true;
         }
-    }
-
-    void Start()
-    {
-        
-        OriginalPosition = transform.localPosition;
-        CurrPosition = transform.localPosition;
     }
 
     // Update is called once per frame

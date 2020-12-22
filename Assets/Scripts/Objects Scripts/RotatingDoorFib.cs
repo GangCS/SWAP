@@ -7,7 +7,6 @@ public class RotatingDoorFib : IMovementAction
     Quaternion lookRotation;
     public override void performAction()
     {
-       
         lookRotation = Quaternion.Euler(new Vector3(0, -90, 0));
     }
 

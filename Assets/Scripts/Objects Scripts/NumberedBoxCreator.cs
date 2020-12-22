@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class NumberedBoxCreator : MonoBehaviour
 {
     [SerializeField] Transform prefab;
-    Random rand;
 
     void Start()
     {

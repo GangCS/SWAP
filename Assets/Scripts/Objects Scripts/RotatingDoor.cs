@@ -28,6 +28,14 @@ public class RotatingDoor : IMovementAction
             toPlay = true;
         }
     }
+/*    private void playDoorMusic()
+    {
+        if (toPlay)
+        {
+            AudioSource.PlayClipAtPoint(sound, transform.position);
+            toPlay = !toPlay;
+        }
+    }*/
 
     void Update()
     {
