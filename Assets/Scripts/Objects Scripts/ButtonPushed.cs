@@ -9,7 +9,7 @@ public class ButtonPushed : MonoBehaviour
     [Tooltip("Object to perform action on")]
     [SerializeField] IMovementAction[] ActionObject;
     [Tooltip("A specific impacting object")]
-    [SerializeField] GameObject Cube=null;
+    [SerializeField] GameObject Cube = null;
     [Tooltip("Player object")]
     [SerializeField] GameObject Char;
     Vector3 ScaleVector;
@@ -19,14 +19,14 @@ public class ButtonPushed : MonoBehaviour
     }
     private void OnTriggerStay(Collider other) // Button is pushed
     {
-        ScaleVector = new Vector3(1, 1, 0.2f);//Pushing the Button down
-        if(performForAnyCube() || itsMatchedCube(other) || characterStand(other))
+        ScaleVector = new Vector3(1, 1, 0.2f);// Pushing the Button down
+        if (performForAnyCube() || itsMatchedCube(other) || characterStand(other))
         {
             foreach (var item in ActionObject)
             {
                 item.performAction();
             }
-            
+
         }
     }
     bool performForAnyCube()
@@ -53,7 +53,7 @@ public class ButtonPushed : MonoBehaviour
     private void OnTriggerExit(Collider other) // Button is no longer pushed
     {
         ScaleVector = new Vector3(1, 1, 1); //Pulling Button back up
-        if(performForAnyCube() || itsMatchedCube(other) || characterStand(other))
+        if (performForAnyCube() || itsMatchedCube(other) || characterStand(other))
         {
             foreach (var item in ActionObject)
             {
