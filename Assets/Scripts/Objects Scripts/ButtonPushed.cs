@@ -20,7 +20,7 @@ public class ButtonPushed : MonoBehaviour
     private void OnTriggerStay(Collider other) // Button is pushed
     {
         ScaleVector = new Vector3(1, 1, 0.2f);//Pushing the Button down
-        if(Cube == null || (Cube != null && other.gameObject.Equals(Cube)) || (Cube != null && other.gameObject.Equals(Char)))
+        if(performForAnyCube() || itsMatchedCube(other) || characterStand(other))
         {
             foreach (var item in ActionObject)
             {
@@ -29,10 +29,31 @@ public class ButtonPushed : MonoBehaviour
             
         }
     }
+    bool performForAnyCube()
+    {
+        if (Cube == null)
+            return true;
+        else
+            return false;
+    }
+    bool itsMatchedCube(Collider other)
+    {
+        if (Cube != null && other.gameObject.Equals(Cube))
+            return true;
+        else
+            return false;
+    }
+    bool characterStand(Collider other)
+    {
+        if (Cube != null && other.gameObject.Equals(Char))
+            return true;
+        else
+            return false;
+    }
     private void OnTriggerExit(Collider other) // Button is no longer pushed
     {
         ScaleVector = new Vector3(1, 1, 1); //Pulling Button back up
-        if(Cube == null || (Cube != null && other.gameObject.Equals(Cube)) || (Cube != null && other.gameObject.Equals(Char)))
+        if(performForAnyCube() || itsMatchedCube(other) || characterStand(other))
         {
             foreach (var item in ActionObject)
             {
