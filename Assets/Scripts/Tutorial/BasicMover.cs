@@ -1,0 +1,51 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class BasicMover : MonoBehaviour
+{
+    [SerializeField] IMovementAction Door;
+    [SerializeField] string text;
+    bool W = false;
+    bool A = false;
+    bool S = false;
+    bool D = false;
+
+    //instructions
+    void Start()
+    {
+        GameObject textObj = GameObject.Find("instructions");
+        textObj.GetComponent<TextMeshProUGUI>().text = text;
+    }
+
+    private void OnEnable()
+    {
+        GameObject textObj = GameObject.Find("instructions");
+        textObj.GetComponent<TextMeshProUGUI>().text = text;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            W = true;
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            A = true;
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            S = true;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            D = true;
+        }
+        if(W && A && S && D)
+        {
+            Door.performAction();
+        }
+    }
+}

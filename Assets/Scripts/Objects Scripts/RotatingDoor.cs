@@ -5,7 +5,7 @@ using UnityEngine;
 public class RotatingDoor : IMovementAction
 {
     [SerializeField] AudioClip sound;
-    Quaternion lookRotation;
+    protected Quaternion lookRotation;
     bool toPlay = true;
 
     public override void performAction()
