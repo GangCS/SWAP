@@ -31,7 +31,7 @@ public class ButtonFib : MonoBehaviour
         ScaleVector = new Vector3(2, 0.2f, 2);//Pushing the Button down
         if (itsMatchedCube(other)) 
         {
-            buttonScript.ButtonsCounter5++;
+            buttonScript.ButtonsCounter3++;
         }
     }
 
@@ -39,7 +39,7 @@ public class ButtonFib : MonoBehaviour
     {
         if (itsMatchedCube(other))
         {
-            if (buttonScript.ButtonsCounter5 == 5)
+            if (buttonScript.ButtonsCounter3 == 3)
             {
                 ActionObject.performAction();
             }
@@ -51,8 +51,8 @@ public class ButtonFib : MonoBehaviour
         ScaleVector = originalScale; //Pulling Button back up
         if (itsMatchedCube(other))
         {
-            buttonScript.ButtonsCounter5--;
-            if (buttonScript.ButtonsCounter5 != 5)
+            buttonScript.ButtonsCounter3--;
+            if (buttonScript.ButtonsCounter3 != 3)
             {
                 ActionObject.undoAction();
             }

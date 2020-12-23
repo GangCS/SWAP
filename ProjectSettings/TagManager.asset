@@ -10,6 +10,7 @@ TagManager:
   - BlueBox
   - BlueButton
   - GreenButton
+  - Music
   layers:
   - Default
   - TransparentFX

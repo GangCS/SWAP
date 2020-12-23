@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /**
  * This component performs player actions controlled with a different keys on the keyboard.
@@ -24,11 +25,12 @@ public class PlayerActions : MonoBehaviour
     {
         rayFromCameraToClickPosition = Camera.main.ScreenPointToRay(ScreenMiddle);
 
-        /*      if (boxIsLifted()) 
-                {
-                    Box = null; // box is not lifted
-                } probably not necessary
-        */
+        if (boxIsLifted())
+        {
+            Box = null; // box is not lifted
+        }
+
+
         if (Input.GetKeyDown(KeyCode.Q))//Try to swap location with an object
         {
             SWAP();
@@ -42,6 +44,10 @@ public class PlayerActions : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && Box != null)
         {
             ThrowBox();
+        }
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            RestartLevel();
         }
     }
     private void SWAP()
@@ -87,6 +93,7 @@ public class PlayerActions : MonoBehaviour
                 positionForBox = Camera.main.transform.position + Camera.main.transform.forward * 2;
                 Box.transform.position = positionForBox;
                 Box.transform.SetParent(upDown.transform); // lifting the box to character hands
+                
             }
         }
         else // Leaving Box down When E is pressed again
@@ -104,5 +111,10 @@ public class PlayerActions : MonoBehaviour
         rb.isKinematic = false;
         rb.AddForce(rayFromCameraToClickPosition.direction * 15f, ForceMode.Impulse);//Throw the Box forward
         Box = null;
+    }
+
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
