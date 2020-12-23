@@ -130,7 +130,7 @@ public class CharacterKeyboardMover : MonoBehaviour
     private void drawOutlineToBox()
     {
         RaycastHit hittedBox;
-        bool hasHit = Physics.Raycast(rayFromCameraToClickPosition, out hittedBox);
+        bool hasHit = Physics.Raycast(rayFromCameraToClickPosition, out hittedBox,100f);
         if (hasHit)
         {
             if (hittedBox.transform.gameObject.tag == "Box") //ray hit box

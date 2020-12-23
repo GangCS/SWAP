@@ -41,6 +41,6 @@ public class upliftingObject : IMovementAction
     // Update is called once per frame
     void Update()
     {
-        transform.localPosition = Vector3.Slerp(transform.localPosition, CurrPosition, Time.deltaTime * 5f);
+        transform.localPosition = Vector3.Lerp(transform.localPosition, CurrPosition, Time.deltaTime * 5f);
     }
 }
