@@ -3862,6 +3862,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: 1158200e84b7f9a42b06ba16db8dd584, type: 3}
+  goalRotation: {x: 0, y: -90, z: 0}
+  currRotation: {x: 0, y: 0, z: 0}
 --- !u!1001 &1215939558
 PrefabInstance:
   m_ObjectHideFlags: 0

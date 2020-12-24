@@ -5,12 +5,14 @@ using UnityEngine;
 public class RotatingDoor : IMovementAction
 {
     [SerializeField] AudioClip sound;
+    [SerializeField] Vector3 goalRotation;
+    [SerializeField] Vector3 currRotation;
     protected Quaternion lookRotation;
     bool toPlay = true;
 
     public override void performAction()
     {
-        lookRotation = Quaternion.Euler(new Vector3(0, -90, 0));
+        lookRotation = Quaternion.Euler(goalRotation);
         if (toPlay)
         {
             AudioSource.PlayClipAtPoint(sound, transform.position, 1f);
@@ -21,7 +23,7 @@ public class RotatingDoor : IMovementAction
 
     public override void undoAction()
     {
-        lookRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        lookRotation = Quaternion.Euler(currRotation);
         if (!toPlay)
         {
             AudioSource.PlayClipAtPoint(sound, transform.position);

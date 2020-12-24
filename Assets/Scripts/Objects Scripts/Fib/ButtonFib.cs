@@ -14,7 +14,7 @@ public class ButtonFib : MonoBehaviour
     Vector3 originalScale;
     Vector3 ScaleVector;
 
-    GameObject fiveButtonsPushed; 
+    GameObject threeButtonsPushed; 
     ButtonsCounter buttonScript;
 
     void Start()
@@ -22,8 +22,8 @@ public class ButtonFib : MonoBehaviour
         originalScale = Button.transform.localScale;//Button's Transform scale to pull up
         ScaleVector = Button.transform.localScale;
 
-        fiveButtonsPushed = GameObject.Find("Fib");
-        buttonScript = fiveButtonsPushed.GetComponent<ButtonsCounter>();
+        threeButtonsPushed = GameObject.Find("Fib");
+        buttonScript = threeButtonsPushed.GetComponent<ButtonsCounter>();
     }
 
     private void OnTriggerEnter(Collider other)

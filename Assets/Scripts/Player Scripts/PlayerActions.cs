@@ -109,7 +109,7 @@ public class PlayerActions : MonoBehaviour
         Box.transform.SetParent(null);
         Rigidbody rb = Box.GetComponent<Rigidbody>();
         rb.isKinematic = false;
-        rb.AddForce(rayFromCameraToClickPosition.direction * 15f, ForceMode.Impulse);//Throw the Box forward
+        rb.AddForce(rayFromCameraToClickPosition.direction * 10f, ForceMode.Impulse);//Throw the Box forward
         Box = null;
     }
 
