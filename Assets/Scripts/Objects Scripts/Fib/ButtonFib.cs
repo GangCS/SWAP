@@ -61,7 +61,7 @@ public class ButtonFib : MonoBehaviour
 
     void Update()
     {
-        Button.transform.localScale = Vector3.Slerp(Button.transform.localScale, ScaleVector, Time.deltaTime * 5f);//Smooth button up/down
+        Button.transform.localScale = Vector3.Lerp(Button.transform.localScale, ScaleVector, Time.deltaTime * 5f);//Smooth button up/down
     }
 
     bool itsMatchedCube(Collider other)

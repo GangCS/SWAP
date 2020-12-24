@@ -3,6 +3,14 @@ public class LookX : MonoBehaviour
 {
     [SerializeField] private float _speedRotation = 1f;
 
+    private void Start()
+    {
+        GameObject sensativityScript = GameObject.Find("SensScript");
+        if (sensativityScript != null)
+        {
+            _speedRotation = sensativityScript.GetComponent<SensHolder>().getSens();
+        }
+    }
     void Update()
     {
         float _mouseX = Input.GetAxis("Mouse X");

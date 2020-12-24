@@ -28,12 +28,13 @@ public class CharacterKeyboardMover : MonoBehaviour
     private Vector3 ScreenMiddle;
     private Ray rayFromCameraToClickPosition;
 
-
+    private Animator anim;
     void Start()
     {
         _cc = GetComponent<CharacterController>();
         currSpeed = _speed;
         ScreenMiddle = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+        anim = GetComponent<Animator>();
     }
     
     
@@ -74,6 +75,15 @@ public class CharacterKeyboardMover : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+        if(z!=0)
+        {
+            anim.SetInteger("Vertical", 1);
+        }
+        else
+        {
+            anim.SetInteger("Vertical", 0);
+        }
+
         velocity.x = x * currSpeed;
         velocity.z = z * currSpeed;
         velocity = transform.TransformDirection(velocity);

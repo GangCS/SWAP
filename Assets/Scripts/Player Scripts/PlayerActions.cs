@@ -90,7 +90,7 @@ public class PlayerActions : MonoBehaviour
                 hittedBox.rigidbody.isKinematic = true;
 
                 Vector3 positionForBox = Box.transform.position;
-                positionForBox = Camera.main.transform.position + Camera.main.transform.forward * 2;
+                positionForBox = Camera.main.transform.position + Camera.main.transform.forward*2;
                 Box.transform.position = positionForBox;
                 Box.transform.SetParent(upDown.transform); // lifting the box to character hands
                 
