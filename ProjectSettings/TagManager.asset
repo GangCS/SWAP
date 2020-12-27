@@ -11,6 +11,9 @@ TagManager:
   - BlueButton
   - GreenButton
   - Music
+  - MovingPlat
+  - Button
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,7 @@ TagManager:
   - 
   - 
   - PlayerHead
-  - 
+  - FireLayer
   - 
   - 
   - 

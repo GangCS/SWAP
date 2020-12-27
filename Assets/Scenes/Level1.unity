@@ -9457,6 +9457,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 236379052}
     m_Modifications:
+    - target: {fileID: -4503541119526422172, guid: b8fc8c3d0e0ff9b4089c4e346ac42ecc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1062870459301972, guid: b8fc8c3d0e0ff9b4089c4e346ac42ecc, type: 3}
       propertyPath: m_Name
       value: BoxPart1

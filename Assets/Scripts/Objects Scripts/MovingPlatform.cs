@@ -5,42 +5,54 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
     public Transform movingPlatform;
-    public Transform position1;
-    public Transform position2;
+    public Vector3 position1;
+    public Vector3 position2;
     public Vector3 newPosition;
-    public string currentState;
-    public float smooth; // time wait before move next pos
+    public bool isAtPosition1;
     public float resetTime;
 
     // Use this for initialization
     void Start()
     {
-        ChangeTarget();
+        isAtPosition1 = true;
+        newPosition = position1;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        movingPlatform.position = Vector3.Lerp(movingPlatform.position, newPosition, smooth * Time.deltaTime);
+        movingPlatform.localPosition = Vector3.Lerp(movingPlatform.localPosition, newPosition, Time.deltaTime);
     }
 
-    void ChangeTarget()
+    public void ChangeTarget()
     {
-        if (currentState == "Moving To Position 1")
+        if (isAtPosition1)
+        {
+            newPosition = position2;
+            isAtPosition1 = false;
+        }
+        else
+        {
+            newPosition = position1;
+            isAtPosition1 = true;
+        }
+
+      /*  if (currentState == "Moving To Position 1")
         {
             currentState = "Moving To Position 2";
-            newPosition = position2.position;
+            newPosition = position2;
         }
         else if (currentState == "Moving To Position 2")
         {
             currentState = "Moving To Position 1";
-            newPosition = position1.position;
+            newPosition = position1;
         }
         else if (currentState == "")
         {
             currentState = "Moving To Position 2";
-            newPosition = position2.position;
-        }
-        Invoke("ChangeTarget", resetTime);
+            newPosition = position2;
+        }*/
+
+
     }
 }

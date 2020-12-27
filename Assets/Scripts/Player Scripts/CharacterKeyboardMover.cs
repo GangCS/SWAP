@@ -120,6 +120,7 @@ public class CharacterKeyboardMover : MonoBehaviour
             body.velocity = pushDir * currSpeed;
         }
     }
+
     private void enableGravity()
     {
         velocity.y -= _gravity * Time.deltaTime;
@@ -143,7 +144,7 @@ public class CharacterKeyboardMover : MonoBehaviour
         bool hasHit = Physics.Raycast(rayFromCameraToClickPosition, out hittedBox,100f);
         if (hasHit)
         {
-            if (hittedBox.transform.gameObject.tag == "Box") //ray hit box
+            if (hittedBox.transform.gameObject.tag == "Box" || hittedBox.transform.gameObject.tag == "Button") //ray hit box
             {
                 hittedBox.transform.gameObject.GetComponent<Outline>().enabled = true; // make the red outline to the box
             }

@@ -49,6 +49,11 @@ public class PlayerActions : MonoBehaviour
         {
             RestartLevel();
         }
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            pushButton();
+        }
+        
     }
     private void SWAP()
     {
@@ -116,5 +121,16 @@ public class PlayerActions : MonoBehaviour
     private void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    
+    private void pushButton()
+    {
+        RaycastHit hittedBox;
+        bool hasHit = Physics.Raycast(rayFromCameraToClickPosition, out hittedBox);
+        if (hasHit && hittedBox.distance <= 2f && hittedBox.collider.gameObject.tag == "Button")//ray hit box and the box is close enough
+        {
+            ButtonsScript bs = hittedBox.transform.gameObject.GetComponent<ButtonsScript>();
+            bs.Click();
+        }
     }
 }
