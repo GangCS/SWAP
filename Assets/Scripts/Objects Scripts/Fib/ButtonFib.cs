@@ -7,7 +7,7 @@ public class ButtonFib : MonoBehaviour
     [Tooltip("The Button")]
     [SerializeField] GameObject Button;
     [Tooltip("Object to perform action on")]
-    [SerializeField] IMovementAction ActionObject;
+    [SerializeField] IMovementAction [] ActionObject;
     [Tooltip("A specific impacting object")]
     [SerializeField] GameObject Cube = null;
     [SerializeField] int ButtonsToPush = 3;
@@ -41,7 +41,10 @@ public class ButtonFib : MonoBehaviour
         {
             if (buttonScript.ButtonsCounters == ButtonsToPush)
             {
-                ActionObject.performAction();
+                foreach (var item in ActionObject)
+                {
+                    item.performAction();
+                }
             }
         }
     }
@@ -54,7 +57,10 @@ public class ButtonFib : MonoBehaviour
             buttonScript.ButtonsCounters--;
             if (buttonScript.ButtonsCounters != ButtonsToPush)
             {
-                ActionObject.undoAction();
+                foreach (var item in ActionObject)
+                {
+                    item.undoAction();
+                }
             }
         }
     }

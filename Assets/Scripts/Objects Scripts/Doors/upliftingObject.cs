@@ -6,6 +6,7 @@ using UnityEngine;
 public class upliftingObject : IMovementAction
 {
     [SerializeField] Vector3 goalPosition;
+    [SerializeField] float MoveSpeed = 5;
     protected Vector3 OriginalPosition;
     protected Vector3 CurrPosition;
 
@@ -41,6 +42,6 @@ public class upliftingObject : IMovementAction
     // Update is called once per frame
     void Update()
     {
-        transform.localPosition = Vector3.Lerp(transform.localPosition, CurrPosition, Time.deltaTime * 5f);
+        transform.localPosition = Vector3.Lerp(transform.localPosition, CurrPosition, Time.deltaTime * MoveSpeed);
     }
 }

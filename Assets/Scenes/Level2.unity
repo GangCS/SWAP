@@ -1104,6 +1104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce9ef27ac5bc34247864a036473fe988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 2870dbbced760494991394d7ab0fceb8, type: 3}
 --- !u!54 &282099690
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2076,6 +2077,7 @@ MonoBehaviour:
   sound: {fileID: 8300000, guid: 1158200e84b7f9a42b06ba16db8dd584, type: 3}
   goalRotation: {x: 0, y: -90, z: 0}
   currRotation: {x: 0, y: 0, z: 0}
+  ActionCounter: 1
 --- !u!1001 &704234819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2646,6 +2648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce9ef27ac5bc34247864a036473fe988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 2870dbbced760494991394d7ab0fceb8, type: 3}
 --- !u!54 &906626904
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4173,6 +4176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalPosition: {x: 0, y: 8, z: 0}
+  MoveSpeed: 2
   sound: {fileID: 8300000, guid: ba7dacc05d7b3394c9d9d41cdab379b3, type: 3}
 --- !u!1 &1370777685
 GameObject:
@@ -5638,6 +5642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalPosition: {x: -0.24, y: 8, z: -2.44}
+  MoveSpeed: 1.5
   sound: {fileID: 8300000, guid: ba7dacc05d7b3394c9d9d41cdab379b3, type: 3}
 --- !u!1001 &1922990649
 PrefabInstance:
