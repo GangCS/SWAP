@@ -6,6 +6,10 @@ public class FallOnCollide : MonoBehaviour
 {
     float pickUpTime;
     bool pickedup=false;
+
+    [SerializeField] AudioClip sound;
+    bool falling = false;
+    private float cooldownBox;
     private void Start()
     {
         
@@ -21,8 +25,12 @@ public class FallOnCollide : MonoBehaviour
         {
             pickedup = false;
         }
+        if (!GetComponent<Rigidbody>().velocity.Equals(Vector3.zero))
+        {
+            falling = true;
+        }
     }
-    // "When the Box Collide with something its falling"
+    // "When the Box Collide with something it will fall"
     private void OnCollisionEnter(Collision collision)
     {
         if (GetComponent<Rigidbody>().isKinematic && pickedup)
@@ -34,6 +42,12 @@ public class FallOnCollide : MonoBehaviour
                 pickedup = false;
                 pickUpTime = 0;
             }
+        }
+        if (falling && Time.time - cooldownBox >= 2f)
+        {
+            AudioSource.PlayClipAtPoint(sound, transform.position, 1f);
+            cooldownBox = Time.time;
+            falling = false;
         }
     }
 }

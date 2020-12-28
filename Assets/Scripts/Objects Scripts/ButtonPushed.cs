@@ -45,7 +45,7 @@ public class ButtonPushed : MonoBehaviour
     }
     bool characterStand(Collider other)
     {
-        if (Cube != null && other.gameObject.Equals(Char))
+        if (Cube != null && Char != null && other.gameObject.Equals(Char))
             return true;
         else
             return false;

@@ -10,6 +10,7 @@ public class ButtonFib : MonoBehaviour
     [SerializeField] IMovementAction ActionObject;
     [Tooltip("A specific impacting object")]
     [SerializeField] GameObject Cube = null;
+    [SerializeField] int ButtonsToPush = 3;
 
     Vector3 originalScale;
     Vector3 ScaleVector;
@@ -19,8 +20,7 @@ public class ButtonFib : MonoBehaviour
 
     void Start()
     {
-        originalScale = Button.transform.localScale;//Button's Transform scale to pull up
-        ScaleVector = Button.transform.localScale;
+        ScaleVector = new Vector3(1, 1, 1);
 
         threeButtonsPushed = GameObject.Find("Fib");
         buttonScript = threeButtonsPushed.GetComponent<ButtonsCounter>();
@@ -28,10 +28,10 @@ public class ButtonFib : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        ScaleVector = new Vector3(2, 0.2f, 2);//Pushing the Button down
+        ScaleVector = new Vector3(1, 1, 0.2f);//Pushing the Button down
         if (itsMatchedCube(other)) 
         {
-            buttonScript.ButtonsCounter3++;
+            buttonScript.ButtonsCounters++;
         }
     }
 
@@ -39,7 +39,7 @@ public class ButtonFib : MonoBehaviour
     {
         if (itsMatchedCube(other))
         {
-            if (buttonScript.ButtonsCounter3 == 3)
+            if (buttonScript.ButtonsCounters == ButtonsToPush)
             {
                 ActionObject.performAction();
             }
@@ -48,11 +48,11 @@ public class ButtonFib : MonoBehaviour
 
     private void OnTriggerExit(Collider other) // Button is no longer pushed
     {
-        ScaleVector = originalScale; //Pulling Button back up
+        ScaleVector = new Vector3(1, 1, 1); //Pulling Button back up
         if (itsMatchedCube(other))
         {
-            buttonScript.ButtonsCounter3--;
-            if (buttonScript.ButtonsCounter3 != 3)
+            buttonScript.ButtonsCounters--;
+            if (buttonScript.ButtonsCounters != ButtonsToPush)
             {
                 ActionObject.undoAction();
             }

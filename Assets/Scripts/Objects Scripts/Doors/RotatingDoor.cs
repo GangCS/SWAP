@@ -7,7 +7,9 @@ public class RotatingDoor : IMovementAction
     [SerializeField] AudioClip sound;
     [SerializeField] Vector3 goalRotation;
     [SerializeField] Vector3 currRotation;
+    [SerializeField] int ActionCounter = 1;
     protected Quaternion lookRotation;
+    private int counter;
     bool toPlay = true;
 
     public override void performAction()
@@ -42,5 +44,9 @@ public class RotatingDoor : IMovementAction
     void Update()
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);// Opens the door
+    }
+    private void Start()
+    {
+        counter = 0;
     }
 }

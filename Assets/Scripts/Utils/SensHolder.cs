@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SensHolder : MonoBehaviour
 {
-    private float sensativity;
+    private float sensativity=1;
     // Start is called before the first frame update
     private void Awake()
     {

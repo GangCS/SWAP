@@ -13,6 +13,8 @@ public class PlayerActions : MonoBehaviour
     private Vector3 ScreenMiddle;
     private CharacterController _cc;
     [SerializeField] GameObject upDown = null;
+    [SerializeField] AudioClip swapSound;
+    [SerializeField] AudioClip throwSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +68,7 @@ public class PlayerActions : MonoBehaviour
         {
             if (hittedBox.collider.gameObject.tag == "Box")//ray hit box
             {
+                AudioSource.PlayClipAtPoint(swapSound, transform.position, 1f);
                 Vector3 oldPos = hittedBox.transform.position;
                 hittedBox.transform.position = transform.position + new Vector3(0, 1, 0);//place the box in character position
                 _cc.enabled = false; // we change _cc to false, make the Swap and then make it true again.
@@ -111,6 +114,7 @@ public class PlayerActions : MonoBehaviour
     private void ThrowBox()
     {
         // this function throws the ball from the player
+        AudioSource.PlayClipAtPoint(throwSound, transform.position, 1f);
         Box.transform.SetParent(null);
         Rigidbody rb = Box.GetComponent<Rigidbody>();
         rb.isKinematic = false;

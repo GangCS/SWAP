@@ -2292,6 +2292,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upDown: {fileID: 3773109880303635450}
+  swapSound: {fileID: 8300000, guid: 9cd8a2271db84104397b63c65617831c, type: 3}
+  throwSound: {fileID: 8300000, guid: 05d8f8d082c891f4a92efc58889e0847, type: 3}
 --- !u!114 &8289172785437217751
 MonoBehaviour:
   m_ObjectHideFlags: 0

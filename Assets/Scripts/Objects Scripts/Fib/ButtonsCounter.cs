@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class ButtonsCounter : MonoBehaviour
 {
-    public int ButtonsCounter3 = 0;
+    public int ButtonsCounters = 0;
 }
