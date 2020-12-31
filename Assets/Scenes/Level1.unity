@@ -1091,15 +1091,12 @@ MonoBehaviour:
   goalRotation: {x: 0, y: -90, z: 0}
   currRotation: {x: 0, y: 0, z: 0}
   ActionCounter: 1
-<<<<<<< HEAD
-=======
 --- !u!4 &157875145 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4024225618482898, guid: cec8525009a9342498bf9a8dfc7de1d8,
     type: 3}
   m_PrefabInstance: {fileID: 1207019624}
   m_PrefabAsset: {fileID: 0}
->>>>>>> bcef50b75f5751def62791423c7572a65404cd95
 --- !u!1001 &179275768
 PrefabInstance:
   m_ObjectHideFlags: 0
