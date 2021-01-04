@@ -252,7 +252,7 @@ PrefabInstance:
     - target: {fileID: 3002400480495768646, guid: 248c98fe89b87c349b7ffcdf2284bdd7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1938417
+      value: -1.03
       objectReference: {fileID: 0}
     - target: {fileID: 3002400480495768646, guid: 248c98fe89b87c349b7ffcdf2284bdd7,
         type: 3}
@@ -832,6 +832,10 @@ MonoBehaviour:
   - {fileID: 1573602392}
   Cube: {fileID: 441332787}
   ButtonsToPush: 3
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  baseCollisionAmount: 0
 --- !u!65 &112585483
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2994,7 +2998,7 @@ PrefabInstance:
     - target: {fileID: 3002400480495768646, guid: 248c98fe89b87c349b7ffcdf2284bdd7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1938417
+      value: -1.121
       objectReference: {fileID: 0}
     - target: {fileID: 3002400480495768646, guid: 248c98fe89b87c349b7ffcdf2284bdd7,
         type: 3}
@@ -3924,6 +3928,10 @@ MonoBehaviour:
   - {fileID: 1573602392}
   Cube: {fileID: 1289826245}
   ButtonsToPush: 3
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  baseCollisionAmount: 0
 --- !u!65 &672153291
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9566,6 +9574,10 @@ MonoBehaviour:
   - {fileID: 1573602392}
   Cube: {fileID: 291155940}
   ButtonsToPush: 3
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  baseCollisionAmount: 0
 --- !u!65 &1532858418
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10063,7 +10075,7 @@ PrefabInstance:
     - target: {fileID: 3002400480495768646, guid: 248c98fe89b87c349b7ffcdf2284bdd7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1938417
+      value: -1.08
       objectReference: {fileID: 0}
     - target: {fileID: 3002400480495768646, guid: 248c98fe89b87c349b7ffcdf2284bdd7,
         type: 3}

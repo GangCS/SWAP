@@ -12,14 +12,20 @@ public class ButtonFib : MonoBehaviour
     [SerializeField] GameObject Cube = null;
     [SerializeField] int ButtonsToPush = 3;
 
-    Vector3 originalScale;
     Vector3 ScaleVector;
+
+    [SerializeField] LayerMask m_LayerMask;
+    public int baseCollisionAmount;
+    Collider[] hitColliders;
 
     GameObject threeButtonsPushed; 
     ButtonsCounter buttonScript;
 
     void Start()
     {
+        hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2, Quaternion.identity, m_LayerMask);//get all the collisions
+        baseCollisionAmount = hitColliders.Length;//get number of collisions - if in-game you get this number again it means nothing is on the button - pull butt up
+
         ScaleVector = new Vector3(1, 1, 1);
 
         threeButtonsPushed = GameObject.Find("Fib");
@@ -51,7 +57,12 @@ public class ButtonFib : MonoBehaviour
 
     private void OnTriggerExit(Collider other) // Button is no longer pushed
     {
-        ScaleVector = new Vector3(1, 1, 1); //Pulling Button back up
+        hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2, Quaternion.identity, m_LayerMask);
+        if (hitColliders.Length == baseCollisionAmount)//means nothing is on the button
+        {
+            ScaleVector = new Vector3(1, 1, 1); //Pulling Button back up
+        }
+
         if (itsMatchedCube(other))
         {
             buttonScript.ButtonsCounters--;
