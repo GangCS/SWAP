@@ -12,7 +12,7 @@ using UnityEngine;
 public class CharacterKeyboardMover : MonoBehaviour
 {
     [Tooltip("Speed of player keyboard-movement, in meters/second")]
-    [SerializeField] float _speed = 3.5f;
+    [SerializeField] float _speed = 4.5f;
     private float currSpeed;
     [SerializeField] float _gravity = 9.81f;
     [SerializeField] float _jumpheight = 100f;
