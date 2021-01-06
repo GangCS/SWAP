@@ -15,14 +15,23 @@ public class BasicMover : MonoBehaviour
     //instructions
     void Start()
     {
-        GameObject textObj = GameObject.Find("instructions");
-        textObj.GetComponent<TextMeshProUGUI>().text = text;
+        GameObject instructionsTextObj = GameObject.Find("instructions");
+        instructionsTextObj.GetComponent<TextMeshProUGUI>().text = text;
+
+        
+        StartCoroutine(showTextForSeconds());
     }
 
+    IEnumerator showTextForSeconds()
+    {
+        yield return new WaitForSeconds(9);
+        GameObject narratorTextObj = GameObject.Find("NarratorText");
+        narratorTextObj.GetComponent<TextMeshProUGUI>().text = "";
+    }
     private void OnEnable()
     {
-        GameObject textObj = GameObject.Find("instructions");
-        textObj.GetComponent<TextMeshProUGUI>().text = text;
+        GameObject instructionsTextObj = GameObject.Find("instructions");
+        instructionsTextObj.GetComponent<TextMeshProUGUI>().text = text;
     }
 
     void Update()
