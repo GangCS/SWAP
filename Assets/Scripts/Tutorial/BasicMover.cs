@@ -17,17 +17,8 @@ public class BasicMover : MonoBehaviour
     {
         GameObject instructionsTextObj = GameObject.Find("instructions");
         instructionsTextObj.GetComponent<TextMeshProUGUI>().text = text;
-
-        
-        StartCoroutine(showTextForSeconds());
     }
 
-    IEnumerator showTextForSeconds()
-    {
-        yield return new WaitForSeconds(9);
-        GameObject narratorTextObj = GameObject.Find("NarratorText");
-        narratorTextObj.GetComponent<TextMeshProUGUI>().text = "";
-    }
     private void OnEnable()
     {
         GameObject instructionsTextObj = GameObject.Find("instructions");

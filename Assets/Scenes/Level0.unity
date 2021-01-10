@@ -4469,7 +4469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NarratorSpeech: {fileID: 441961104}
-  secondToShowNarratorText: 14
+  secondToShowNarratorText: 9
 --- !u!82 &441961104
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13103,8 +13103,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\"Welcome experiment 5781, this is your last training exercise, use it
-    wisely. Next time we will see you on the test field.\u201D"
+  m_text: Welcome experiment 5781, this is your last training exercise, use it wisely.
+    Next time we will see you on the test field.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13137,7 +13137,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 3
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
