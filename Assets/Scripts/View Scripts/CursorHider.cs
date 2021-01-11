@@ -22,7 +22,7 @@ public class CursorHider : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
-        if(Cursor.visible && Input.GetKeyDown(KeyCode.Mouse0))
+        if (Cursor.visible && Input.GetKeyDown(KeyCode.Mouse0))
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;

@@ -13,9 +13,12 @@ public class LookX : MonoBehaviour
     }
     void Update()
     {
-        float _mouseX = Input.GetAxis("Mouse X");
-        Vector3 rotation = transform.localEulerAngles;
-        rotation.y += _mouseX * _speedRotation;
-        transform.localEulerAngles = rotation;
+        if (!PauseScript.gameIsPaused)
+        {
+            float _mouseX = Input.GetAxis("Mouse X");
+            Vector3 rotation = transform.localEulerAngles;
+            rotation.y += _mouseX * _speedRotation;
+            transform.localEulerAngles = rotation;
+        }
     }
 }

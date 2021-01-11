@@ -2169,7 +2169,6 @@ GameObject:
   - component: {fileID: 8289172785437217746}
   - component: {fileID: 8289172785437217745}
   - component: {fileID: 8289172785437217749}
-  - component: {fileID: 8289172785437217748}
   - component: {fileID: 8289172785437217747}
   - component: {fileID: 8289172785437217750}
   - component: {fileID: 8289172785437217751}
@@ -2248,18 +2247,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speedRotation: 1
---- !u!114 &8289172785437217748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8289172785437217744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c375c745518abdf4c9036f3ab2085627, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8289172785437217747
 MonoBehaviour:
   m_ObjectHideFlags: 0

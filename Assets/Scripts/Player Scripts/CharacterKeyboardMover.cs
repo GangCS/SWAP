@@ -45,29 +45,31 @@ public class CharacterKeyboardMover : MonoBehaviour
         if (drawRayForDebug)
             Debug.DrawRay(rayFromCameraToClickPosition.origin, rayFromCameraToClickPosition.direction * rayLength, rayColor, rayDuration);
 
-
-        drawOutlineToBox(); // make the red outline if the ray is at box
-
-        setVelocityAndDirection();
-        moveCharacter();
-
-        if (!_cc.isGrounded) //if character is NOT standing on the ground
+        if (!PauseScript.gameIsPaused)
         {
-            enableGravity();
-        }
-        else // player is on the ground
-        {
-            if (Input.GetKeyDown(KeyCode.Space))//space button pressed - jump
+            drawOutlineToBox(); // make the red outline if the ray is at box
+
+            setVelocityAndDirection();
+            moveCharacter();
+
+            if (!_cc.isGrounded) //if character is NOT standing on the ground
             {
-                Jump();
+                enableGravity();
             }
-            if(Input.GetKeyDown(KeyCode.LeftShift))//shift button pressed - walk faster
+            else // player is on the ground
             {
-                walkFaster();
-            }
-            if (Input.GetKeyUp(KeyCode.LeftShift))//shift button unpressed - walk regular speed
-            {
-                walkNormal();
+                if (Input.GetKeyDown(KeyCode.Space))//space button pressed - jump
+                {
+                    Jump();
+                }
+                if (Input.GetKeyDown(KeyCode.LeftShift))//shift button pressed - walk faster
+                {
+                    walkFaster();
+                }
+                if (Input.GetKeyUp(KeyCode.LeftShift))//shift button unpressed - walk regular speed
+                {
+                    walkNormal();
+                }
             }
         }
     }

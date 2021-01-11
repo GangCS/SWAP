@@ -20,20 +20,23 @@ public class LookY : MonoBehaviour
     }
     void Update()
     {
-        _mouseY = Input.GetAxis("Mouse Y");
-/*        head = GameObject.Find("Bip001 Head");
-        upDown = GameObject.Find("upDown");*/
-      //  headRota = head.transform.localEulerAngles;
-        rotation = transform.localEulerAngles;
-       // upDownRota = upDown.transform.localEulerAngles;
-        rotation.x -= _mouseY * _speedRotation;
-        //headRota.z += _mouseY * _speedRotation;
-        //upDownRota.x -= _mouseY * _speedRotation;
-        if (rotation.x <= 90f || rotation.x >= 270)
+        if (!PauseScript.gameIsPaused)
         {
-            transform.localEulerAngles = rotation;
-          //  head.transform.localEulerAngles = headRota;
-          //  upDown.transform.localEulerAngles = upDownRota;
+            _mouseY = Input.GetAxis("Mouse Y");
+            /*        head = GameObject.Find("Bip001 Head");
+                    upDown = GameObject.Find("upDown");*/
+            //  headRota = head.transform.localEulerAngles;
+            rotation = transform.localEulerAngles;
+            // upDownRota = upDown.transform.localEulerAngles;
+            rotation.x -= _mouseY * _speedRotation;
+            //headRota.z += _mouseY * _speedRotation;
+            //upDownRota.x -= _mouseY * _speedRotation;
+            if (rotation.x <= 90f || rotation.x >= 270)
+            {
+                transform.localEulerAngles = rotation;
+                //  head.transform.localEulerAngles = headRota;
+                //  upDown.transform.localEulerAngles = upDownRota;
+            }
         }
     }
 }

@@ -26,38 +26,41 @@ public class PlayerActions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rayFromCameraToClickPosition = Camera.main.ScreenPointToRay(ScreenMiddle);
-
-        if (boxIsLifted())
+        if (!PauseScript.gameIsPaused)
         {
-            Box = null; // box is not lifted
-        }
 
 
-        if (Input.GetKeyDown(KeyCode.Q))//Try to swap location with an object
-        {
-            SWAP();
-        }
+            rayFromCameraToClickPosition = Camera.main.ScreenPointToRay(ScreenMiddle);
 
-        if (Input.GetKeyDown(KeyCode.E))//Try to pick up/down an object
-        {
-            pickUp();
-        }
-        //Mouse left click && Box is not null when lifted by player
-        if (Input.GetMouseButtonDown(0) && Box != null)
-        {
-            ThrowBox();
-        }
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            RestartLevel();
-        }
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            pushButton();
-        }
+            if (boxIsLifted())
+            {
+                Box = null; // box is not lifted
+            }
 
 
+            if (Input.GetKeyDown(KeyCode.Q))//Try to swap location with an object
+            {
+                SWAP();
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))//Try to pick up/down an object
+            {
+                pickUp();
+            }
+            //Mouse left click && Box is not null when lifted by player
+            if (Input.GetMouseButtonDown(0) && Box != null)
+            {
+                ThrowBox();
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                RestartLevel();
+            }
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                pushButton();
+            }
+        }
     }
 
     private void SWAP()

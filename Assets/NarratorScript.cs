@@ -10,8 +10,26 @@ public class NarratorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        NarratorSpeech.Play();
-        StartCoroutine(showTextForSeconds());
+        if (!PauseScript.gameIsPaused)
+        {
+            NarratorSpeech.Play();
+            StartCoroutine(showTextForSeconds());
+        }
+    }
+    private void Update()
+    {
+        if (PauseScript.gameIsPaused)
+        {
+            if (NarratorSpeech.isPlaying)
+            {
+                NarratorSpeech.Pause();
+            }
+
+        }
+        else
+        {
+            NarratorSpeech.UnPause();
+        }
     }
     IEnumerator showTextForSeconds()
     {
