@@ -15,7 +15,11 @@ public class PauseScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        #if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.P))
+        #else
+        if(Input.GetKeyDown(KeyCode.Escape))
+        #endif
         {
             if (gameIsPaused)
             {
@@ -45,10 +49,12 @@ public class PauseScript : MonoBehaviour
 
     public void Resume()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        
+       
         PauseMenuCanvas.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

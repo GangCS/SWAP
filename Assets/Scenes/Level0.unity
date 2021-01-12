@@ -416,9 +416,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 21693882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8f223d23cbdbb840afbd86b6a45a2f7, type: 3}
+  m_Script: {fileID: 11500000, guid: e78aee4d3cda4a1439eeec48f4169024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookX: {fileID: 1684599282}
+  lookY: {fileID: 1353440055}
   mainSlider: {fileID: 21693885}
 --- !u!114 &21693885
 MonoBehaviour:
@@ -15449,6 +15451,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d386f8832054e9c4ebb7feebef84fb0c, type: 3}
+--- !u!114 &1353440055 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3773109880303635452, guid: f497b2ac1b459eb4789da17e4f12be11,
+    type: 3}
+  m_PrefabInstance: {fileID: 1684599273}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac88907a66d7f2b46ab2426949bdbdcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1355543320 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7371939441663329640, guid: 4c774ccb36270434caf72b6a59424109,
@@ -19897,6 +19911,18 @@ MonoBehaviour:
   Door: {fileID: 1930605417}
   text: "Use \u201CE\u201D to pick/drop object.          Click left-mouse to throw
     it.        Press \u201CQ\u201D to SWAP with object."
+--- !u!114 &1684599282 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8289172785437217749, guid: f497b2ac1b459eb4789da17e4f12be11,
+    type: 3}
+  m_PrefabInstance: {fileID: 1684599273}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684599274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db737e6a0502914478e39928ce59df60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1697765315
 PrefabInstance:
   m_ObjectHideFlags: 0

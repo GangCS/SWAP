@@ -39,4 +39,8 @@ public class LookY : MonoBehaviour
             }
         }
     }
+    public void changeRotation(float newSpeed)
+    {
+        _speedRotation = newSpeed;
+    }
 }

@@ -21,4 +21,8 @@ public class LookX : MonoBehaviour
             transform.localEulerAngles = rotation;
         }
     }
+    public void changeRotation(float newSpeed)
+    {
+        _speedRotation = newSpeed;
+    }
 }
